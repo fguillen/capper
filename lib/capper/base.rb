@@ -222,7 +222,7 @@ namespace :deploy do
   end
 
   desc <<-DESC
-    [internal] Touches up the released code. This is called by update_code \
+    Touches up the released code. This is called by update_code \
     after the basic deploy finishes.
 
     This task will set up symlinks to the shared directory for the log, system, \
