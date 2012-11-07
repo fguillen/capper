@@ -1,3 +1,5 @@
+puts "XXX: loading Capper 5"
+
 require "dedent"
 
 require "capper/version"

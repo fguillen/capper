@@ -1,3 +1,4 @@
+puts "XXX: loading Capper 4"
 require 'benchmark'
 require 'yaml'
 require 'capistrano/recipes/deploy/scm'
@@ -156,7 +157,7 @@ end
 
 namespace :deploy do
   desc <<-DESC
-    Deploys your project. This calls `update', `cleanup' and `restart'. Note that \
+    XXX Deploys your project. This calls `update', `cleanup' and `restart'. Note that \
     this will generally only work for applications that have already been deployed \
     once. For a "cold" deploy, you'll want to take a look at the `deploy:cold' \
     task, which handles the cold start specifically.
