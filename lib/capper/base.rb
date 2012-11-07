@@ -162,6 +162,8 @@ namespace :deploy do
     task, which handles the cold start specifically.
   DESC
   task :default do
+    puts "XXX: default"
+    puts "XXX: symlinks: #{fetch(:symlinks, {})}"
     update
     restart
     cleanup
@@ -227,10 +229,17 @@ namespace :deploy do
     and tmp/pids directories as well as mappings specified in :symlinks.
   DESC
   task :finalize_update, :except => { :no_release => true } do
+    puts "XXX: finalize_update"
+    puts "XXX: symlinks: #{fetch(:symlinks, {})}"
     run(fetch(:internal_symlinks, {}).merge(fetch(:symlinks, {})).map do |source, dest|
-      "rm -rf #{latest_release}/#{dest} && " +
-      "mkdir -p #{File.dirname(File.join(latest_release, dest))} && " +
-      "ln -s #{shared_path}/#{source} #{latest_release}/#{dest}"
+      command =
+        "rm -rf #{latest_release}/#{dest} && " +
+        "mkdir -p #{File.dirname(File.join(latest_release, dest))} && " +
+        "ln -s #{shared_path}/#{source} #{latest_release}/#{dest}"
+
+      puts "XXX: command: #{command}"
+
+      command
     end.join(" && "))
   end
 
